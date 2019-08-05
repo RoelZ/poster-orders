@@ -5,6 +5,12 @@ module.exports = {
   entry: {
     app: './src'
   },
+  node : {
+    console: true,    
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty'
+  },
   devServer: {
     contentBase: './dist'
   },

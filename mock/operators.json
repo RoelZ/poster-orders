@@ -1,6 +1,6 @@
 [
     {
-        "name": "KPN",
+        "name": "test",
         "network": true,
         "voice": true,
         "catv": false,
@@ -21,6 +21,12 @@
         "data": true
     },{
         "name": "ROEL-COM",
+        "network": false,
+        "voice": true,
+        "catv": false,
+        "data": false
+    },{
+        "name": "henk-COM",
         "network": false,
         "voice": true,
         "catv": false,

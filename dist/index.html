@@ -9,21 +9,19 @@
 </head>
 
 <body ng-app="CloudSight" layout="column" ng-cloak>
-    <div layout="row" layout-padding ng-controller="sidenavCtrl">
-        <md-sidenav md-component-id="left" class="md-sidenav-left" md-is-locked-open="sideToggle">
-            Left navigation pane
-            <md-button ng-click="closeLeftMenu()">
-                Close Left Menu
-            </md-button>
+    <div layout="row" layout-padding>
+        <md-sidenav md-component-id="mainMenu" class="md-sidenav-left" md-is-locked-open="true">
+            <md-list>
+                <md-list-item>
+                    <md-button href="#operators">Operators</md-button>
+                </md-list-item>
+                <md-divider inset></md-divider>
+                <md-list-item>
+                    <md-button href="#posters">Posters</md-button>
+                </md-list-item>
+            </md-list>
         </md-sidenav>
-
-        <md-content layout-fill>
-            <md-button ng-click="openLeftMenu()">
-                Open Left Menu
-            </md-button>
-            <operators></operators>
-        </md-content>
-    </div>
+        <md-content layout-fill ng-view></md-content>
     </div>
     <script src="bundle.js"></script>
 </body>

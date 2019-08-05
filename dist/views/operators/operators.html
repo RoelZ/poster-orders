@@ -1,0 +1,27 @@
+<div layout="row" layout-padding style="background-color:rgb(46, 46, 176);color:white;">
+    <h1>Operators</h1>
+</div>
+
+<div layout="row" flex="100" flex ng-controller="operatorCtrl">
+    <md-list flex style="text-align:center;">
+        <md-list-item style="background-color:#f0f0f0">
+            <div layout="column" flex="20" class="md-title">Operator name</div>
+            <div layout="column" flex="20" class="md-title">Network Operator</div>
+            <div layout="column" flex="20" class="md-title">Voice Operator</div>
+            <div layout="column" flex="20" class="md-title">CATV Operator</div>
+            <div layout="column" flex="20" class="md-title">Data Operator</div>
+        </md-list-item>
+        <md-divider></md-divider>
+        <md-list-item ng-repeat="operator in operators">
+            <div layout="column" flex="20"><strong>{{ operator.name }}</strong></div>
+            <div layout="column" flex="20">{{ operator.network }}</div>
+            <div layout="column" flex="20">{{ operator.voice }}</div>
+            <div layout="column" flex="20">{{ operator.catv }}</div>
+            <div layout="column" flex="20">{{ operator.data }}</div>
+        </md-list-item>
+        <md-divider></md-divider>
+    </md-list>
+    <!-- <md-button class="md-raised">New operator</md-button> -->
+    <md-button ng-href="/#/operators/add" class="md-fab md-accent md-raised" style="position: fixed; bottom:2rem; right: 2rem;" aria-label="Add new Operator">+</md-button>
+</div>
+<md-button ng-click="refresh()" class="md-raised md-primary">Refresh</md-button>

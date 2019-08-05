@@ -6,4 +6,7 @@ angular.module('CloudSight')
         $http.get('/api/operators')
         .then(cb);
     }
+    this.createOperator = function(data){
+        $http.post('/api/operators', data);
+    }
 })

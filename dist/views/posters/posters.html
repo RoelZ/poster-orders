@@ -1,0 +1,14 @@
+<div layout="row" layout-padding>
+  <h1>Posters</h1>
+</div>
+
+<div layout="row" flex="100" flex ng-controller="posterCtrl">
+  <md-card ng-repeat="poster in posters">
+      <img src="card-image.png" class="md-card-image" alt="image caption">
+      <md-card-content>
+        <h2>Moment</h2>
+        <p>Subline</p>
+        <p>Tagline</p>
+      </md-card-content>
+  </md-card>
+</div>

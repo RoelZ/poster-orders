@@ -1,0 +1,36 @@
+<div layout="row" layout-padding style="background-color:rgb(46, 46, 176);color:white;">
+    <h1>Add new operator</h1>
+</div>
+<div ng-controller="newOperatorCtrl">
+    <form name="add" layout="row" flex="100" flex>
+        <md-list flex="50">
+            <md-list-item>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Operator name</label>
+                    <input ng-model="operator.name">
+                </md-input-container>
+            </md-list-item>
+            <md-list-item>
+                <p>Network Operator</p>
+                <md-switch ng-model="operator.network" class="md-primary"></md-switch>
+            </md-list-item>
+
+            <md-list-item>
+                <p>Voice Operator</p>
+                <md-switch ng-model="operator.voice" class="md-primary"></md-switch>
+            </md-list-item>
+
+            <md-list-item>
+                <p>CATV Operator</p>
+                <md-switch ng-model="operator.catv" class="md-primary"></md-switch>
+            </md-list-item>
+
+            <md-list-item>
+                <p>Data Operator</p>
+                <md-switch ng-model="operator.data" class="md-primary"></md-switch>
+            </md-list-item>
+        </md-list> 
+    </form>
+    <md-button ng-click="newOperator(operator)"  class="md-raised md-primary">Submit</md-button>
+    <md-button ng-click="reset()" class="md-raised md-primary">Reset values</md-button>
+</div>
