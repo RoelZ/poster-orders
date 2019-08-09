@@ -25,8 +25,8 @@ angular.module('CloudSight', ['ngRoute','ngMaterial'])
     .service('wooService', function(){
         let WooCommerce = new WooCommerceAPI({
             url: 'https://placethemoment.com', 
-            consumerKey: 'ck_e7619f16de7e3070f846c9b121a6e7be38a987b0',
-            consumerSecret: 'cs_9c7e612d493c02126093f6604f14ab789b197ee1',
+            consumerKey: '',
+            consumerSecret: '',
             wpAPI: true,
             version: 'wc/v3'
         })
