@@ -4,7 +4,7 @@ angular.module('CloudSight', ['ngRoute','ngMaterial'])
   .config(function($routeProvider, $locationProvider) {
     $routeProvider
     .when('/posters',{
-        templateUrl: 'views//posters/posters.html'
+        templateUrl: 'views/posters/posters.html'
     })
     .when('/operators',{
         templateUrl: 'views/operators/operators.html'
@@ -22,31 +22,11 @@ angular.module('CloudSight', ['ngRoute','ngMaterial'])
     //   requireBase: false
     // });
     })
-    .service('wooService', function(){
-        let WooCommerce = new WooCommerceAPI({
-            url: 'https://placethemoment.com', 
-            consumerKey: '',
-            consumerSecret: '',
-            wpAPI: true,
-            version: 'wc/v3'
-        })
-        return WooCommerce;
-    })
     .directive('operators', function () {
         return {
             templateUrl: 'views/operators.html'
         };
-    })
-    .controller('posterCtrl', ['$scope','wooService', function($scope, wooService){
-        
-        wooService.get('orders', function(err, data, res) {
-            console.log(res);
-        });
-        // WooCommerce.getPosters(function(response){
-        //     let posters = response.data;
-        //     $scope.posters = posters;
-        // })
-    }])
+    })    
     .controller('operatorCtrl', function ($scope, dataService) {
         dataService.getOperators(function (response) {
             let operators = response.data;
@@ -61,6 +41,7 @@ angular.module('CloudSight', ['ngRoute','ngMaterial'])
         }
     })
     .controller('newOperatorCtrl', function($scope, $location, dataService){
+        $scope.operator = dataService.getOperatorById();
         $scope.newOperator = function(data){
             dataService.createOperator(data);
             $location.path('/operators');
@@ -69,14 +50,36 @@ angular.module('CloudSight', ['ngRoute','ngMaterial'])
             $scope.add.$setPristine();
             $scope.operator = {};
         }
+    })
+    .controller('posterCtrl', function($scope, wcService){
+      wcService.getPosters(function(response){
+        let posters = response.data;
+        $scope.posters = posters;
+      });
+      $scope.getDataSet = function(){
+        console.log($scope.posters);
+        // return JSON.parse([{ 'json': 'test' }]);
+        // return new Blob([JSON.stringify({ json: 'test' }, null, 2)], {type : 'application/json'});
+      }
+      $scope.getPrintPoster = function(poster){
+        let orderId = poster.id;
+        let url = poster.line_items[0].meta_data[11].value;
+        let regex = /"(.*?)"/gi;
+        url = url.match(regex);
+        let highresUrl = url[0].slice(1,-1);
+
+        fetch(highresUrl)
+          .then(resp => resp.blob())
+          .then(blob => {
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.download = orderId+'.png';
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+          })
+          .catch(() => alert('Probleem bij het ophalen..'));        
+      }
     });
-    // .factory('PTM', function(WooCommerceAPI){
-    //     let WooCommerce = new WooCommerceAPI({
-    //             url: 'https://placethemoment.com', 
-    //             consumerKey: '',
-    //             consumerSecret: '',
-    //             wpAPI: true,
-    //             version: 'wc/v3'
-    //         })
-    //     return WooCommerce;
-    // });

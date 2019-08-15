@@ -8,21 +8,8 @@
     <title>CloudSight</title>
 </head>
 
-<body ng-app="CloudSight" layout="column" ng-cloak>
-    <div layout="row" layout-padding>
-        <md-sidenav md-component-id="mainMenu" class="md-sidenav-left" md-is-locked-open="true">
-            <md-list>
-                <md-list-item>
-                    <md-button href="#operators">Operators</md-button>
-                </md-list-item>
-                <md-divider inset></md-divider>
-                <md-list-item>
-                    <md-button href="#posters">Posters</md-button>
-                </md-list-item>
-            </md-list>
-        </md-sidenav>
-        <md-content layout-fill ng-view></md-content>
-    </div>
+<body ng-app="CloudSight" layout="column" ng-cloak>     
+    <md-content layout-fill ng-view></md-content>
     <script src="bundle.js"></script>
 </body>
 

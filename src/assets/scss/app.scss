@@ -1,2 +1,49 @@
 /* Third-Party Libraries */
 @import '~angular-material/angular-material';
+
+.snow {
+  color:black;
+  background-color:white;
+  .md-card-image { 
+    border:2px solid black;
+   }
+}
+.moon {
+  color:#54575c;
+  background-color:white;
+  .md-card-image { 
+    border:2px solid #54575c;
+   }
+}
+.granite {
+  color: white;
+  background-color: #54575c;
+  .md-card-image { 
+    border:2px solid white;
+   }
+}
+.mint {
+  color:white;
+  background-color:#6fa189;
+  .md-card-image { 
+    border:2px solid white;
+   }
+}
+.honey {
+  color:black;
+  background-color:#d8ae46;
+  .md-card-image { 
+    border:2px solid black;
+   }
+}
+
+.md-card-image {
+  cursor: pointer;
+  border-radius: 50% !important;
+}
+
+.copy {
+  cursor: default;
+  user-select: all; 
+}
+

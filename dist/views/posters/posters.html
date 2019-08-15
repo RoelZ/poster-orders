@@ -2,13 +2,32 @@
   <h1>Posters</h1>
 </div>
 
-<div layout="row" flex="100" flex ng-controller="posterCtrl">
-  <md-card ng-repeat="poster in posters">
-      <img src="card-image.png" class="md-card-image" alt="image caption">
-      <md-card-content>
-        <h2>Moment</h2>
-        <p>Subline</p>
-        <p>Tagline</p>
-      </md-card-content>
-  </md-card>
+<div ng-controller="posterCtrl">
+  <div layout>
+    <md-button ng-click="getDataSet()" class="md-primary md-raised">DataSet</md-button>
+  </div>
+  <div layout>
+    <div flex="33" layout-padding ng-repeat="poster in posters | limitTo: 10">
+      <md-card class="{{poster.line_items[0].meta_data[1].value}}">
+        <md-card-title>
+          <md-chips>
+            <md-chip>{{poster.id}}</md-chip>
+            <md-chip>{{poster.line_items[0].meta_data[0].value}}</md-chip>
+            <md-chip>{{poster.shipping.country}}</md-chip>
+          </md-chips>
+        </md-card-title>
+        <img ng-click="getPrintPoster(poster)" src="{{poster.line_items[0].meta_data[10].value | limitTo : 55 : 9 }}" class="md-card-image" alt="image caption">
+        <md-card-content>        
+          <h2 class="copy">{{poster.line_items[0].meta_data[7].value}}</h2>
+          <p class="copy">{{poster.line_items[0].meta_data[8].value}}</p>
+          <p class="copy">{{poster.line_items[0].meta_data[9].value}}</p>
+        </md-card-content>
+        <md-card-footer>
+          <md-card-actions layout="row" layout-align="end center">
+            <md-button href="https://www.placethemoment.com/nl/shop/map-poster/?draft={{poster.cart_hash}}" target="_blank">Editor</md-button>
+          </md-card-actions>
+        </md-card-footer>
+      </md-card>
+    </div>
+  </div>
 </div>

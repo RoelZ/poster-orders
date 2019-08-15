@@ -3,7 +3,8 @@
 import 'angular';
 import 'angular-route';
 import 'angular-material';
-import 'woocommerce-api';   // issue met WebPack, temp fix https://github.com/request/request/issues/1529
+// import '@uirouter/angularjs';
+// import '@ionic/core';
 
 import './app';
 import './assets/scss/app.scss';
